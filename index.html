@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Virtueous Designs — Alternative Clothing for the Bold</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+        background-color: #000;
+        color: #fff;
+        /* Layer 1: translucent black overlay. Layer 2: the logo image. */
+        background-image:
+          linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.75)),
+          url("./virtueous-logo.png");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      /* ========================================================
+         ZUMIEZ-STYLE 3-TIER HEADER
+         ======================================================== */
+      header.zumiez-header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        width: 100%;
+        background-color: #fff;
+        color: #000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+      }
+
+      /* TIER 1: TOP UTILITY & PROMO RIBBON */
+      .top-ribbon {
+        background: linear-gradient(90deg, #0a1128 0%, #1c3166 50%, #0a1128 100%);
+        color: #ffffff;
+        font-size: 13px;
+        font-weight: 700;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 2rem;
+        letter-spacing: 0.3px;
+      }
+      .top-ribbon-promo {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      .top-ribbon-promo a {
+        color: #fff;
+        transition: opacity 0.2s;
+      }
+      .top-ribbon-promo a:hover {
+        text-decoration: underline;
+      }
+      .top-ribbon-promo .promo-arrow {
+        font-size: 14px;
+      }
+      .top-ribbon-links {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        font-size: 12px;
+        font-weight: 500;
+      }
+      .top-ribbon-links a {
+        color: #e0e6ed;
+        transition: color 0.2s;
+      }
+      .top-ribbon-links a:hover {
+        color: #ffffff;
+        text-decoration: underline;
+      }
+
+      /* TIER 2: MAIN BAR (LOGO, SEARCH, UTILITY ICONS) */
+      .header-main-bar {
+        display: grid;
+        grid-template-columns: 240px 1fr auto;
+        align-items: center;
+        padding: 0.75rem 2rem;
+        background-color: #ffffff;
+        gap: 2rem;
+      }
+
+      /* Zumiez-style bold, heavy brand logo */
+      .brand-logo {
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
+        color: #000000;
+      }
+      .brand-logo-text {
+        font-family: "Impact", "Arial Black", "Helvetica Neue", sans-serif;
+        font-size: 2.35rem;
+        font-weight: 900;
+        letter-spacing: -1.5px;
+        text-transform: uppercase;
+        color: #000000;
+        line-height: 1;
+        margin: 0;
+        transform: scaleY(1.08);
+      }
+      .brand-logo-text span {
+        color: #8a44da;
+      }
+
+      /* Search field with inner search icon */
+      .header-search {
+        max-width: 420px;
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+      .header-search input {
+        width: 100%;
+        height: 40px;
+        padding: 7px 42px 6px 15px;
+        font-size: 14px;
+        font-family: inherit;
+        color: #000;
+        background-color: #fff;
+        border: 1.6px solid #cacaca;
+        border-radius: 0px;
+        outline: none;
+        transition: border-color 0.2s;
+      }
+      .header-search input:focus {
+        border-color: #000000;
+      }
+      .header-search input::placeholder {
+        color: #444;
+        font-style: italic;
+      }
+      .header-search button {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 40px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #1a1a1a;
+        padding: 0;
+      }
+      .header-search button:hover {
+        color: #000;
+      }
+
+      /* Right-hand side utility icons matching Zumiez layout */
+      .header-actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 1.75rem;
+      }
+      .header-action-item {
+        display: flex;
+        align-items: center;
+        color: #1a1a1a;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: color 0.15s;
+        position: relative;
+      }
+      .header-action-item:hover {
+        color: #8a44da;
+      }
+      .header-action-item.order-tracking {
+        font-size: 13px;
+        font-weight: 500;
+        color: #2a2a2a;
+        line-height: 1.1;
+        max-width: 70px;
+        text-align: left;
+      }
+      .header-action-item.order-tracking:hover {
+        color: #000000;
+        text-decoration: underline;
+      }
+      .header-action-item svg {
+        display: block;
+        flex-shrink: 0;
+      }
+      .cart-badge {
+        position: absolute;
+        top: -7px;
+        right: -9px;
+        background-color: #ff0000;
+        color: #ffffff;
+        font-size: 11px;
+        font-weight: 800;
+        padding: 1px 5px;
+        border-radius: 10px;
+        line-height: 1.2;
+      }
+
+      /* TIER 3: BLACK CATEGORY NAVIGATION BAR WITH MEGA MENUS */
+      .category-nav-bar {
+        background-color: #000000;
+        position: relative;
+      }
+      .category-nav-list {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        margin: 0;
+        padding: 0 2rem;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+      .category-nav-list::-webkit-scrollbar {
+        display: none;
+      }
+      .category-item {
+        position: static; /* Allows mega dropdown to span full header width */
+      }
+      .category-link {
+        display: flex;
+        align-items: center;
+        height: 44px;
+        padding: 0 16px;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        color: #ffffff;
+        white-space: nowrap;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        transition: background-color 0.15s, color 0.15s;
+        text-decoration: none;
+      }
+      .category-link.accent-cyan {
+        color: #80c3db;
+      }
+      .category-link.accent-red {
+        color: #ff4d4d;
+      }
+      .category-item:hover > .category-link,
+      .category-link:hover,
+      .category-item:focus-within > .category-link {
+        background-color: #ffffff;
+        color: #000000 !important;
+      }
+
+      /* MEGA MENU DROPDOWN */
+      .mega-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        color: #000000;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        border-top: 1px solid #e5e5e5;
+        padding: 1.75rem 2.5rem;
+        z-index: 999;
+      }
+      .category-item:hover .mega-menu,
+      .category-item:focus-within .mega-menu {
+        display: block;
+      }
+
+      .mega-menu-inner {
+        display: grid;
+        grid-template-columns: 220px 1fr 1fr 1fr 280px;
+        gap: 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+      .mega-col-side {
+        border-right: 1px solid #ebebeb;
+        padding-right: 1.5rem;
+      }
+      .mega-col-side h4 {
+        margin: 0 0 1rem;
+        font-size: 14px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .mega-col-side h4 a {
+        color: #000;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+      }
+      .mega-col-side h4 a:hover {
+        color: #8a44da;
+      }
+      .mega-col-side ul,
+      .mega-col ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .mega-col-side li,
+      .mega-col li {
+        margin-bottom: 0.5rem;
+      }
+      .mega-col-side a,
+      .mega-col a {
+        font-size: 13px;
+        color: #333333;
+        transition: color 0.15s, padding-left 0.15s;
+        display: inline-block;
+      }
+      .mega-col-side a:hover,
+      .mega-col a:hover {
+        color: #000000;
+        font-weight: 700;
+      }
+      .mega-col-side .badge-new {
+        background-color: #2e7d32;
+        color: #fff;
+        font-size: 10px;
+        font-weight: 700;
+        padding: 2px 5px;
+        border-radius: 3px;
+        margin-left: 6px;
+        text-transform: uppercase;
+      }
+      .mega-col h5 {
+        font-size: 14px;
+        font-weight: 800;
+        text-transform: uppercase;
+        margin: 0 0 0.6rem;
+        color: #000000;
+        border-bottom: 2px solid #000;
+        padding-bottom: 4px;
+        display: inline-block;
+      }
+      .mega-col .sub-section {
+        margin-bottom: 1.25rem;
+      }
+      .mega-col-promo {
+        background: #f7f7f7;
+        border-radius: 4px;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .mega-col-promo img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 3px;
+        margin-bottom: 0.75rem;
+      }
+      .mega-col-promo h4 {
+        margin: 0 0 0.25rem;
+        font-size: 14px;
+        font-weight: 900;
+        text-transform: uppercase;
+        color: #000;
+      }
+      .mega-col-promo p {
+        margin: 0 0 0.75rem;
+        font-size: 12px;
+        color: #555;
+      }
+      .mega-col-promo .promo-cta {
+        display: inline-block;
+        background: #000;
+        color: #fff;
+        font-size: 12px;
+        font-weight: 800;
+        text-transform: uppercase;
+        padding: 8px 14px;
+        text-align: center;
+        letter-spacing: 0.5px;
+        transition: background-color 0.2s;
+      }
+      .mega-col-promo .promo-cta:hover {
+        background: #8a44da;
+      }
+
+      /* Mobile adjustment */
+      @media (max-width: 900px) {
+        .top-ribbon {
+          padding: 0 1rem;
+          font-size: 11px;
+        }
+        .top-ribbon-links {
+          display: none;
+        }
+        .header-main-bar {
+          padding: 0.5rem 1rem;
+          flex-wrap: wrap;
+        }
+        .header-search {
+          order: 3;
+          max-width: 100%;
+          width: 100%;
+        }
+        .header-action-item span.action-label {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- ============ SEGMENT 1: HEADER + NAV ============ -->
+    <!-- Zumiez-style authentic 3-tier header: Top Promo Ribbon, Brand Bar with Search & Icons, Category Navigation with Mega Dropdowns -->
+    <header class="zumiez-header">
+
+      <!-- TIER 1: Promo Ribbon + Top Utilities -->
+      <div class="top-ribbon">
+        <div class="top-ribbon-promo">
+          <a href="#new-arrivals">
+            <strong>FREE SHIPPING ON ORDERS OVER $50</strong> — USE CODE: <strong>VIRTUEOUS</strong> <span class="promo-arrow">»</span>
+          </a>
+        </div>
+        <div class="top-ribbon-links">
+          <a href="#sale">Explore What's Trending »</a>
+          <a href="#">Select Your Store: <strong>Downtown Flagship</strong></a>
+        </div>
+      </div>
+
+      <!-- TIER 2: Main Brand Bar (Logo, Live Search Field, Order Tracking, Account, Wishlist, Cart) -->
+      <div class="header-main-bar">
+        <a href="#" class="brand-logo" aria-label="Virtueous Designs Home">
+          <h1 class="brand-logo-text">VIRTUEOUS<span>.</span></h1>
+        </a>
+
+        <form class="header-search" action="#" method="get" role="search">
+          <label for="site-search" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0;">Search products</label>
+          <input
+            type="search"
+            id="site-search"
+            name="q"
+            placeholder="What are you looking for?"
+            autocomplete="off"
+          />
+          <button type="submit" aria-label="Submit search">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+        </form>
+
+        <div class="header-actions">
+          <a href="#" class="header-action-item order-tracking">
+            <span>Order Tracking</span>
+          </a>
+
+          <a href="#" class="header-action-item" aria-label="My Account" title="My Account">
+            <svg width="34" height="34" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18.4134 0C14.7716 0 11.2115 1.07992 8.18346 3.10321C5.15539 5.1265 2.79531 8.00227 1.40164 11.3669C0.00797825 14.7315 -0.356668 18.4338 0.353816 22.0056C1.0643 25.5775 2.818 28.8584 5.39316 31.4336C7.96831 34.0087 11.2493 35.7624 14.8211 36.4729C18.3929 37.1834 22.0953 36.8188 25.4599 35.4251C28.8245 34.0314 31.7002 31.6713 33.7235 28.6433C35.7468 25.6152 36.8267 22.0552 36.8267 18.4134C36.8267 13.5298 34.8868 8.84632 31.4336 5.39315C27.9804 1.93997 23.2969 0 18.4134 0Z" stroke="#222" stroke-width="1.5" fill="none"></path>
+              <circle cx="18.5" cy="14" r="5.5" stroke="#222" stroke-width="2" fill="none"></circle>
+              <path d="M8 29c1.8-4.5 5.8-7 10.5-7s8.7 2.5 10.5 7" stroke="#222" stroke-width="2" stroke-linecap="round" fill="none"></path>
+            </svg>
+          </a>
+
+          <a href="#" class="header-action-item" aria-label="Wishlist" title="Wishlist">
+            <svg width="28" height="28" viewBox="0 0 90 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M82.0452 8.78528C79.8949 6.4833 77.342 4.6572 74.5321 3.41132C71.7221 2.16543 68.7104 1.52417 65.6688 1.52417C62.6272 1.52417 59.6155 2.16543 56.8056 3.41132C53.9956 4.6572 51.4427 6.4833 49.2925 8.78528L44.83 13.5605L40.3675 8.78528C36.0243 4.13761 30.1335 1.52658 23.9912 1.52658C17.8489 1.52658 11.9581 4.13761 7.61485 8.78528C3.27157 13.433 0.831543 19.7365 0.831543 26.3093C0.831543 32.8821 3.27157 39.1857 7.61485 43.8334L12.0773 48.6086L44.83 83.6567L77.5827 48.6086L82.0452 43.8334C84.1964 41.5325 85.9029 38.8006 87.0672 35.7938C88.2314 32.7869 88.8307 29.5641 88.8307 26.3093C88.8307 23.0546 88.2314 19.8318 87.0672 16.8249C85.9029 13.8181 84.1964 11.0862 82.0452 8.78528Z" fill="#1a1a1a"></path>
+            </svg>
+          </a>
+
+          <a href="#" class="header-action-item stash-couch" aria-label="The Virtueous Stash" title="The Virtueous Stash">
+            <!-- Zumiez orange couch stash icon representation -->
+            <svg width="44" height="30" viewBox="0 0 74 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="4" y="16" width="66" height="24" rx="3" fill="#f47920" stroke="#000" stroke-width="2"></rect>
+              <rect x="4" y="8" width="66" height="12" rx="3" fill="#f47920" stroke="#000" stroke-width="2"></rect>
+              <rect x="2" y="18" width="8" height="22" rx="2" fill="#d96613" stroke="#000" stroke-width="2"></rect>
+              <rect x="64" y="18" width="8" height="22" rx="2" fill="#d96613" stroke="#000" stroke-width="2"></rect>
+              <line x1="12" y1="42" x2="10" y2="48" stroke="#000" stroke-width="3" stroke-linecap="round"></line>
+              <line x1="62" y1="42" x2="64" y2="48" stroke="#000" stroke-width="3" stroke-linecap="round"></line>
+            </svg>
+          </a>
+
+          <a href="#" class="header-action-item cart-button" aria-label="My Bag" title="My Bag">
+            <!-- Zumiez signature shopping bag svg -->
+            <svg width="24" height="36" viewBox="0 0 110 191" xmlns="http://www.w3.org/2000/svg" fill="#1a1a1a">
+              <path d="M96.4997 48.219L81.2769 45.0421C80.6547 41.1931 79.4961 37.4503 77.8351 33.9228C74.0868 25.336 68.8931 17.4559 62.48 10.6254C56.1262 3.8744 50.699 0.565096 46.1984 0.300353C41.6977 0.0356086 40.1092 3.34491 41.0358 10.2282C42.5065 18.4436 44.8585 26.4765 48.0514 34.1876C48.5809 35.776 49.1105 37.2321 49.64 38.5559L45.404 37.6293V37.894C47.1834 40.7215 48.7327 43.6873 50.037 46.7629L78.1 52.7197L77.1733 50.4693L96.4997 48.219ZM73.9965 32.5991C75.9515 36.2843 77.2928 40.2635 77.9676 44.3802L54.5377 39.6148C53.6111 37.6293 52.5522 35.3789 51.4932 32.8639C48.4526 26.1075 45.9732 19.1123 44.0803 11.9491C42.7566 5.99235 43.6832 3.08018 47.1249 3.21255C50.5666 3.34492 54.9349 6.52183 60.2298 12.2138C65.7977 18.2839 70.4369 25.1445 73.9965 32.5726V32.5991Z"></path>
+              <path d="M99.8069 49.9399L80.4805 52.1903L76.1123 174.899L82.069 160.471L109.999 172.384L99.8069 49.9399Z"></path>
+              <path d="M50.9617 48.7492C52.3315 51.8259 53.267 55.0781 53.7415 58.4124C54.0953 58.9156 54.2807 59.5181 54.271 60.1332C54.2611 60.8315 53.9757 61.4976 53.4768 61.9864C53.2014 62.2087 52.8823 62.3708 52.5403 62.462C52.1982 62.5532 51.8408 62.5715 51.4913 62.5159C50.7342 62.3815 50.0391 62.0108 49.5057 61.4569C49.0152 60.8575 48.7359 60.1131 48.7113 59.339C48.7113 58.8095 48.7114 58.4124 48.9762 58.1476C48.9563 58.3342 49.0032 58.5218 49.1085 58.6771C49.638 59.7361 50.1674 60.1332 50.6969 60.0008C51.2919 59.9035 51.871 59.7254 52.4178 59.4713C51.9277 55.0688 50.7205 50.7762 48.8438 46.7636C45.0633 38.1943 39.8729 30.3193 33.4886 23.4661C27.1348 16.7152 21.7075 13.4059 17.2069 13.1412C12.7062 12.8764 10.9854 16.3181 12.0443 23.069C12.7962 27.8344 13.9474 32.5281 15.486 37.1005L7.27898 37.63L16.2803 39.4832C16.4409 40.1635 16.6624 40.8281 16.9421 41.4687L3.30782 38.5566L0.130859 162.589L71.8764 190.255L72.0089 190.122L78.3627 54.4412L50.9617 48.7492ZM31.2383 25.187C34.4312 28.7577 37.3516 32.5631 39.9748 36.571L23.8255 33.2617V36.5445L20.2514 36.8092C20.3838 36.9416 20.3838 37.074 20.3838 37.3387C20.7809 38.3977 21.3104 39.4567 21.7075 40.648L45.005 45.5458C45.259 46.2319 45.5688 46.896 45.9315 47.5314L22.5018 42.6336V42.766C23.0312 43.825 23.4283 45.0163 24.0902 46.2077C24.8318 48.2957 25.7163 50.3303 26.7376 52.2968C27.3995 54.0617 27.7966 55.1207 27.929 55.4737C28.1937 55.8708 28.3261 56.2679 28.4585 56.4003C28.5909 56.5327 28.5908 56.665 28.5908 56.9298C28.6002 57.2777 28.534 57.6236 28.3969 57.9435C28.2598 58.2634 28.055 58.5498 27.7966 58.783C27.5287 59.0181 27.2101 59.1881 26.8657 59.28C26.5213 59.3718 26.1604 59.3829 25.8111 59.3125C25.4206 59.3023 25.0378 59.2013 24.6932 59.0175C24.3486 58.8336 24.0515 58.5721 23.8255 58.2535C23.5449 57.9811 23.3281 57.6498 23.1908 57.2836C23.0534 56.9174 22.9989 56.5253 23.0312 56.1356C22.8988 56.0032 22.8988 56.0032 23.0312 55.8708C24.8844 58.1211 26.2082 58.1211 27.1348 55.7384C25.6787 52.9586 24.2226 49.6493 22.5018 45.8105C19.4788 39.0016 17.0001 31.9639 15.0889 24.7634C13.6328 18.8067 14.6917 15.8945 18.1334 16.0269C21.5751 16.1592 25.9434 19.3361 31.2383 25.187Z"></path>
+              <path d="M108.344 175.535L83.0612 163.887L75.9131 188.508L108.344 175.535Z"></path>
+            </svg>
+            <span class="cart-badge">0</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- TIER 3: Category Navigation with Zumiez-Style Dropdown / Mega Menu -->
+      <nav class="category-nav-bar" aria-label="Primary product categories">
+        <ul class="category-nav-list">
+
+          <li class="category-item">
+            <a href="#new-arrivals" class="category-link accent-cyan">Holiday Deals</a>
+          </li>
+
+          <li class="category-item">
+            <a href="#new-arrivals" class="category-link">New Arrivals</a>
+            <!-- Mega menu for New Arrivals -->
+            <div class="mega-menu" role="region" aria-label="New Arrivals menu">
+              <div class="mega-menu-inner">
+                <div class="mega-col-side">
+                  <h4><a href="#new-arrivals">All New Arrivals »</a></h4>
+                  <ul>
+                    <li><a href="#new-arrivals">Men's New Arrivals <span class="badge-new">New</span></a></li>
+                    <li><a href="#new-arrivals">Women's New Arrivals <span class="badge-new">New</span></a></li>
+                    <li><a href="#footwear">Footwear Drops</a></li>
+                    <li><a href="#accessories">Latest Accessories</a></li>
+                    <li><a href="#new-arrivals">Skate Decks & Hardware</a></li>
+                  </ul>
+                </div>
+                <div class="mega-col">
+                  <h5>Trending Tops</h5>
+                  <ul>
+                    <li><a href="#new-arrivals">Graphic Hoodies</a></li>
+                    <li><a href="#new-arrivals">Heavyweight Boxy Tees</a></li>
+                    <li><a href="#new-arrivals">Vintage Wash Flannels</a></li>
+                    <li><a href="#new-arrivals">Thermal Long Sleeves</a></li>
+                  </ul>
+                </div>
+                <div class="mega-col">
+                  <h5>Bottoms & Denim</h5>
+                  <ul>
+                    <li><a href="#new-arrivals">Super Baggy Skate Jeans</a></li>
+                    <li><a href="#new-arrivals">Cargo Utility Pants</a></li>
+                    <li><a href="#new-arrivals">Double Knee Work Pants</a></li>
+                    <li><a href="#new-arrivals">Heavy Fleece Sweatpants</a></li>
+                  </ul>
+                </div>
+                <div class="mega-col">
+                  <h5>Featured Collaborations</h5>
+                  <ul>
+                    <li><a href="#new-arrivals">Virtueous x Underground Art</a></li>
+                    <li><a href="#new-arrivals">Broken Promises Collab</a></li>
+                    <li><a href="#new-arrivals">Empyre Skate Fits</a></li>
+                    <li><a href="#new-arrivals">DC High-Tops Series</a></li>
+                  </ul>
+                </div>
+                <div class="mega-col-promo">
+                  <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400" alt="Shadow Pullover Hoodie" />
+                  <h4>Shadow Pullover</h4>
+                  <p>Our #1 top-rated heavyweight hoodie. Now back in stock.</p>
+                  <a href="#new-arrivals" class="promo-cta">Shop Now</a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="category-item">
+            <a href="#mens" class="category-link">Men</a>
+            <!-- Zumiez-style Men Mega Menu -->
+            <div class="mega-menu" role="region" aria-label="Men's menu">
+              <div class="mega-menu-inner">
+                <div class="mega-col-side">
+                  <h4><a href="#mens">All Men's »</a></h4>
+                  <ul>
+                    <li><a href="#mens">New Arrivals <span class="badge-new">New</span></a></li>
+                    <li><a href="#mens">Graphic Tees</a></li>
+                    <li><a href="#mens">Jeans, Pants & Shorts</a></li>
+                    <li><a href="#mens">Jackets & Outerwear</a></li>
+                    <li><a href="#mens">Hoodies & Sweatshirts</a></li>
+                    <li><a href="#sale">Shop All Deals</a></li>
+                  </ul>
+                </div>
+
+                <div class="mega-col">
+                  <div class="sub-section">
+                    <h5>Graphic Tees</h5>
+                    <ul>
+                      <li><a href="#mens">Streetwear Graphics</a></li>
+                      <li><a href="#mens">Skate & Punk Art</a></li>
+                      <li><a href="#mens">Rhinestone & Metallic</a></li>
+                      <li><a href="#mens">Automotive & Retro</a></li>
+                      <li><a href="#mens">Music & Tour Merch</a></li>
+                    </ul>
+                  </div>
+                  <div class="sub-section">
+                    <h5>Tops</h5>
+                    <ul>
+                      <li><a href="#mens">Classic T-Shirts</a></li>
+                      <li><a href="#mens">Long Sleeve Tees</a></li>
+                      <li><a href="#mens">Mesh Jerseys</a></li>
+                      <li><a href="#mens">Oversized Flannels</a></li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="mega-col">
+                  <div class="sub-section">
+                    <h5>Jeans</h5>
+                    <ul>
+                      <li><a href="#mens">Loose Fit Jeans</a></li>
+                      <li><a href="#mens">Wide Leg Jeans</a></li>
+                      <li><a href="#mens">Baggy Barrel Jeans</a></li>
+                      <li><a href="#mens">Skate Denim</a></li>
+                    </ul>
+                  </div>
+                  <div class="sub-section">
+                    <h5>Pants & Shorts</h5>
+                    <ul>
+                      <li><a href="#mens">Heavy Fleece Joggers</a></li>
+                      <li><a href="#mens">Cargo Pants</a></li>
+                      <li><a href="#mens">Denim Jorts</a></li>
+                      <li><a href="#mens">Mesh Athletic Shorts</a></li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="mega-col">
+                  <div class="sub-section">
+                    <h5>Outerwear</h5>
+                    <ul>
+                      <li><a href="#mens">Puffer Jackets</a></li>
+                      <li><a href="#mens">Track & Windbreakers</a></li>
+                      <li><a href="#mens">Snowboarding Jackets</a></li>
+                      <li><a href="#mens">Workwear Canvas Coats</a></li>
+                    </ul>
+                  </div>
+                  <div class="sub-section">
+                    <h5>Accessories</h5>
+                    <ul>
+                      <li><a href="#accessories">Beanies & Snapbacks</a></li>
+                      <li><a href="#accessories">Crew & Skate Socks</a></li>
+                      <li><a href="#accessories">Chains & Belts</a></li>
+                      <li><a href="#accessories">Backpacks & Crossbody</a></li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="mega-col-promo">
+                  <img src="https://images.unsplash.com/photo-1509087859087-a384654eca4d?w=400" alt="Men's collection" />
+                  <h4>Baggy Jeans & Tees</h4>
+                  <p>Mix & match 2 tees + 2 bottoms for $135.</p>
+                  <a href="#mens" class="promo-cta">Shop The Bundle</a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="category-item">
+            <a href="#womens" class="category-link">Women</a>
+            <!-- Women Mega Menu -->
+            <div class="mega-menu" role="region" aria-label="Women's menu">
+              <div class="mega-menu-inner">
+                <div class="mega-col-side">
+                  <h4><a href="#womens">All Women's »</a></h4>
+                  <ul>
+                    <li><a href="#womens">New Arrivals <span class="badge-new">New</span></a></li>
+                    <li><a href="#womens">Baby Tees & Crop Tops</a></li>
+                    <li><a href="#womens">Low Rise & Baggy Jeans</a></li>
+                    <li><a href="#womens">Hoodies & Zip-Ups</a></li>
+                    <li><a href="#womens">Dresses & Skirts</a></li>
+                  </ul>
+                </div>
+                <div class="mega-col">
+                  <h5>Tops</h5>
+                  <ul>
+                    <li><a href="#womens">Oversized Tees</a></li>
+                    <li><a href="#womens">Baby Tees</a></li>
+                    <li><a href="#womens">Corsets & Tanks</a></li>
+                    <li><a href="#womens">Long Sleeves</a></li>
+                  </ul>
+                </div>
+                <div class="mega-col">
+                  <h5>Bottoms</h5>
+                  <ul>
+                    <li><a href="#womens">Low Rise Baggy Denim</a></li>
+                    <li><a href="#womens">Parachute Pants</a></li>
+                    <li><a href="#womens">Pleated Mini Skirts</a></li>
+                    <li><a href="#womens">Flare Sweatpants</a></li>
+                  </ul>
+                </div>
+                <div class="mega-col">
+                  <h5>Jackets & Layers</h5>
+                  <ul>
+                    <li><a href="#womens">Cropped Puffer Jackets</a></li>
+                    <li><a href="#womens">Faux Fur Trim Coats</a></li>
+                    <li><a href="#womens">Vintage Leather Jackets</a></li>
+                    <li><a href="#womens">Knit Cardigans</a></li>
+                  </ul>
+                </div>
+                <div class="mega-col-promo">
+                  <img src="https://images.unsplash.com/photo-1547448415-e9f5b28e570d?w=400" alt="Women's collection" />
+                  <h4>Y2K Grunge Core</h4>
+                  <p>Oversized silhouette meets vintage grunge aesthetic.</p>
+                  <a href="#womens" class="promo-cta">Explore Style</a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="category-item">
+            <a href="#footwear" class="category-link">Shoes</a>
+            <!-- Shoes Mega Menu -->
+            <div class="mega-menu" role="region" aria-label="Shoes menu">
+              <div class="mega-menu-inner">
+                <div class="mega-col-side">
+                  <h4><a href="#footwear">All Footwear »</a></h4>
+                  <ul>
+                    <li><a href="#footwear">Skate Shoes</a></li>
+                    <li><a href="#footwear">High-Tops</a></li>
+                    <li><a href="#footwear">Slip-Ons</a></li>
+                    <li><a href="#footwear">Boots & Winter</a></li>
+                  </ul>
+                </div>
+                <div class="mega-col">
+                  <h5>By Style</h5>
+                  <ul>
+                    <li><a href="#footwear">Chunky & Puffy Skate Shoes</a></li>
+                    <li><a href="#footwear">Low Profile Canvas</a></li>
+                    <li><a href="#footwear">Platform Sneakers</a></li>
+                    <li><a href="#footwear">Suede Vulc Skate Shoes</a></li>
+                  </ul>
+                </div>
+                <div class="mega-col">
+                  <h5>Shoe Care & Accessories</h5>
+                  <ul>
+                    <li><a href="#footwear">Shoe Cleaner & Protector</a></li>
+                    <li><a href="#footwear">Replacement Laces</a></li>
+                    <li><a href="#footwear">Insoles & Cushioning</a></li>
+                    <li><a href="#footwear">Skate Shoe Goo</a></li>
+                  </ul>
+                </div>
+                <div class="mega-col">
+                  <h5>Top Brands</h5>
+                  <ul>
+                    <li><a href="#footwear">Vans</a></li>
+                    <li><a href="#footwear">DC Shoes</a></li>
+                    <li><a href="#footwear">Nike SB</a></li>
+                    <li><a href="#footwear">Converse</a></li>
+                  </ul>
+                </div>
+                <div class="mega-col-promo">
+                  <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400" alt="Rebel High-Top Sneaker" />
+                  <h4>Rebel High-Top</h4>
+                  <p>Heavy-duty suede + vulcanized grip sole.</p>
+                  <a href="#footwear" class="promo-cta">Shop Footwear</a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="category-item">
+            <a href="#accessories" class="category-link">Accessories</a>
+          </li>
+
+          <li class="category-item">
+            <a href="#new-arrivals" class="category-link">Skate</a>
+          </li>
+
+          <li class="category-item">
+            <a href="#new-arrivals" class="category-link">Snow</a>
+          </li>
+
+          <li class="category-item">
+            <a href="#brands" class="category-link">Brands</a>
+          </li>
+
+          <li class="category-item">
+            <a href="#sale" class="category-link accent-red">Sale</a>
+          </li>
+
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+
+      <!-- ============ SEGMENT 2: HERO + PRODUCT GRID ============ -->
+      <!-- Zumiez-style hero banner and "Shop New Arrivals" product grid -->
+      <section class="hero" id="new-arrivals">
+        <img
+          src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200"
+          alt="Model wearing a black Virtueous Designs hoodie against a dark studio backdrop"
+          width="1200"
+        />
+        <div class="hero-text">
+          <h2>STAND OUT. DON'T BLEND IN.</h2>
+          <p>Alternative clothing for anyone who ever felt misunderstood.</p>
+          <a class="hero-button" href="#mens">Shop New Arrivals</a>
+        </div>
+      </section>
+
+      <section class="product-grid-section">
+        <h2>New Arrivals</h2>
+        <ul class="product-grid">
+          <li class="product-card">
+            <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400" alt="Black oversized hoodie with white screen-printed graphic" width="400" />
+            <h3>Shadow Pullover Hoodie</h3>
+            <p class="price">$64.99</p>
+          </li>
+          <li class="product-card">
+            <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=400" alt="Folded stack of heavyweight cotton t-shirts in muted colors" width="400" />
+            <h3>Misfit Tee 3-Pack</h3>
+            <p class="price">$39.99</p>
+          </li>
+          <li class="product-card">
+            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400" alt="Red high-top skate shoe on a plain background" width="400" />
+            <h3>Rebel High-Top Sneaker</h3>
+            <p class="price">$89.99</p>
+          </li>
+          <li class="product-card">
+            <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=400" alt="White canvas skate shoe with gum sole" width="400" />
+            <h3>Canvas Low-Top</h3>
+            <p class="price">$54.99</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ============ SEGMENT 3: CATEGORY TILES + FOOTER ============ -->
+      <!-- Zumiez-style "Shop by Category" tiles and a full site footer -->
+      <section class="category-section">
+        <h2>Shop by Category</h2>
+        <ul class="category-tiles">
+          <li>
+            <a href="#mens">
+              <img src="https://images.unsplash.com/photo-1509087859087-a384654eca4d?w=400" alt="Person in a flannel shirt and beanie" width="400" />
+              <h3>Men's</h3>
+            </a>
+          </li>
+          <li>
+            <a href="#womens">
+              <img src="https://images.unsplash.com/photo-1547448415-e9f5b28e570d?w=400" alt="Person wearing an oversized graphic tee" width="400" />
+              <h3>Women's</h3>
+            </a>
+          </li>
+          <li>
+            <a href="#accessories">
+              <img src="https://images.unsplash.com/photo-1520045892732-304bc3ac5d8e?w=400" alt="Flat-lay of hats, socks, and a backpack" width="400" />
+              <h3>Accessories</h3>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+    </main>
+
+    <footer>
+      <div class="footer-columns">
+        <section>
+          <h2>Shop</h2>
+          <ul>
+            <li><a href="#mens">Men's</a></li>
+            <li><a href="#womens">Women's</a></li>
+            <li><a href="#footwear">Shoes</a></li>
+            <li><a href="#sale">Sale</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Help</h2>
+          <ul>
+            <li><a href="#">Shipping & Delivery</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Size Guide</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>About</h2>
+          <ul>
+            <li><a href="#">Our Story</a></li>
+            <li><a href="#">Sustainability</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </section>
+      </div>
+      <p class="footer-legal">&copy; 2026 Virtueous Designs. All rights reserved.</p>
+    </footer>
+
+  </body>
+</html>
